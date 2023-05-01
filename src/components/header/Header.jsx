@@ -39,7 +39,7 @@ const Header = () => {
     let out = window.confirm("Do you want to logout?");
     if (out === true) {
       localStorage.removeItem("token");
-      history.replace("/login");
+      history.replace("/");
     } else {
       e.preventDefault();
       return;
