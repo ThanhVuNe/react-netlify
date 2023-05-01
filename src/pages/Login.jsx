@@ -56,7 +56,7 @@ const Login = () => {
         // }
         let data={};
         
-        axios.post("'https://movie-group8.up.railway.app/api/login/signin", {
+        axios.post("https://movie-group8.up.railway.app/api/login/signin", {
             email: email,
             password: password,
         }).then((res) => {
@@ -83,7 +83,7 @@ const Login = () => {
             setMessS("Password and repassword is not match");
         }
         else{
-            axios.post("'https://movie-group8.up.railway.app/api/login/signup", {
+            axios.post("https://movie-group8.up.railway.app/api/login/signup", {
                 email: emailS,
                 password: passwordS,
             }).then((res) => {
