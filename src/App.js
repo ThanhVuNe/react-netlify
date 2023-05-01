@@ -49,7 +49,7 @@ function App() {
               <Footer />
             </>
             :
-            <Redirect to="/login" />
+            <Redirect to="/" />
         }}
       />
 
