@@ -90,6 +90,9 @@
       padding: 5px;
       text-align: center;
       margin: 10px 0;
+      @include mobile {
+        flex-basis: 50%;
+      }
     }
 
     .dropdown-content-flex a:hover {
