@@ -15,6 +15,9 @@
       margin-right: 0;
     }
   }
+  @include mobile {
+    display: none;
+  }
 }
 
 .header {
@@ -117,19 +120,19 @@
     }
 
     @include mobile {
-      position: fixed;
-      bottom: 0;
-      left: 0;
-      height: 5rem;
-      width: 100%;
-      background-color: $body-bg;
-      padding: 0 2rem;
-      box-shadow: $box-shadow;
+      // position: fixed;
+      // bottom: 0;
+      // left: 0;
+      // height: 5rem;
+      // width: 100%;
+      // background-color: $body-bg;
+      // padding: 0 2rem;
+      // box-shadow: $box-shadow;
 
       @include flex(center, space-between);
 
       &>*~* {
-        margin-left: 0;
+        margin-left: 30;
       }
     }
   }
