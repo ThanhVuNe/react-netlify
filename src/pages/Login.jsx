@@ -9,14 +9,18 @@ const Login = () => {
     let [dataLogin, setDataLogin] = useState({});
     let history = useHistory();
     function login(email) {
+        console.log("login");
         const resp = springApi.getAccountByEmail(email);
         resp.then((res) => {
             console.log(res);
             // setDataLogin(res);
             localStorage.setItem("token", JSON.stringify(res));
         });
-        history.replace("/");
-        window.location.reload();
+        // history.replace("/");
+        setTimeout(() => {
+            window.location.reload();
+        }, 2000);
+        
     }
 
     //use state for input emain
@@ -46,17 +50,12 @@ const Login = () => {
     function RepasswordSChange(e) {
         setRepasswordS(e.target.value);
     }
-    function handleSubmitLogin(e) {
+    async function handleSubmitLogin(e) {
         e.preventDefault();
-        //chay doan code nay neu chua viet api spring boot
-        // if (email == "thanhvu123@gmail.com" && password == "thanhvu") {
-        //     login();
-        // } else {
-        //     setMess("Email or password is incorrect");
-        // }
+      
         let data={};
-        
-        axios.post("https://movie-group8.up.railway.app/api/login/signin", {
+        console.log("Submit form")
+        await axios.post("https://movie-group8.up.railway.app/api/login/signin", {
             email: email,
             password: password,
         }).then((res) => {
