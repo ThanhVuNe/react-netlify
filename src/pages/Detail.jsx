@@ -13,10 +13,7 @@ const Detail = () => {
   const [categorys, setCategorys] = useState(null);
   const [videoName, setVideoName] = useState('');
   useEffect(() => {
-    if (category == 'top50') {
-      console.log('top50');
-      category = 'movie';
-    }
+  
     const getDetail = async () => {
       console.log('getDetail');
       // const response = await springApi.getDetail(id);
@@ -31,10 +28,7 @@ const Detail = () => {
   }, [category, id]);
 
   useEffect(() => {
-    if (category == 'top50') {
-      console.log('top50');
-      category = 'movie';
-    }
+  
     const getCategory = async () => {
       // const response = await springApi.getDetail(id);
       const response = springApi.getCategoryByMovie(id)
