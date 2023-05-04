@@ -2,8 +2,7 @@ import React, { useEffect, useState } from "react";
 
 import { useParams } from "react-router";
 
-import tmdbApi from "../api/tmdbApi";
-import apiConfig from "../api/apiConfig";
+
 import springApi from "../api/springApi";
 
 const CastList = (props) => {

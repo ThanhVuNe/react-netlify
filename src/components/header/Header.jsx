@@ -1,12 +1,10 @@
 import React, { useEffect, useRef, useState } from "react";
 import { Link, useHistory, useLocation } from "react-router-dom";
-import tmdbApi from "../../api/tmdbApi";
+
 import "./header.scss";
 import springApi from "../../api/springApi";
 
-// import logo from "./../../assets/logo.png";
 
-// import * as Config from "./../../constants/Config";
 
 const headerNav = [
   {
@@ -69,9 +67,7 @@ const Header = () => {
   useEffect(() => {
     const getGenresList = async () => {
       let response = null;
-      // const params = {};
-      // response = await tmdbApi.getGenres({ params });
-      // setItems(response.genres);
+
       response = springApi.getAllCategory();
       response.then((res) => {
         console.log(res);
@@ -105,12 +101,7 @@ const Header = () => {
               </div>
             </div>
           </li>
-          {/* {headerNav.map((e, i) => (
-            <li key={i} className={`${i === active ? "active" : ""}`}>
-              <Link to={e.path}>{e.display}</Link>
-              <a className={`${i === active ? "active" : ""}`} href="#">{e.display}</a>
-            </li>
-          ))} */}
+    
           <li>
             <Link to={`/movie`}>Movies</Link>
           </li>

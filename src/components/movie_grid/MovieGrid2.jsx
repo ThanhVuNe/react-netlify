@@ -2,8 +2,7 @@ import React, { useState, useEffect } from "react";
 import MovieCard from "./../movie-card/MovieCard";
 import { useParams } from "react-router";
 import "./movie-grid.scss";
-import Button, { OutlineButton } from "../button/Button";
-import tmdbApi, { category, movieType, tvType } from "../../api/tmdbApi";
+
 import springApi from "../../api/springApi";
 const MovieGrid2 = (props) => {
     const [items, setItems] = useState([]);

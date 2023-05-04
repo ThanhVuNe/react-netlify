@@ -4,10 +4,7 @@ import "./movie-card.scss";
 
 import { Link } from "react-router-dom";
 
-import Button from "../button/Button";
 
-import { category } from "../../api/tmdbApi";
-import apiConfig from "../../api/apiConfig";
 // import * as Config from "./../../constants/Config";
 
 const MovieCard = (props) => {

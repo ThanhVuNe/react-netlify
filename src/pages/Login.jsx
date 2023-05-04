@@ -1,13 +1,10 @@
 import React, { useEffect, useState } from "react";
 import "./login.css";
-//import bootstrap
 
-import { useHistory } from "react-router-dom";
 import axios from "axios";
 import springApi from "../api/springApi";
 const Login = () => {
-    let [dataLogin, setDataLogin] = useState({});
-    let history = useHistory();
+  
     function login(email) {
         console.log("login");
         const resp = springApi.getAccountByEmail(email);
@@ -20,7 +17,7 @@ const Login = () => {
         setTimeout(() => {
             window.location.reload();
         }, 2000);
-        
+
     }
 
     //use state for input emain
@@ -50,55 +47,65 @@ const Login = () => {
     function RepasswordSChange(e) {
         setRepasswordS(e.target.value);
     }
-    async function handleSubmitLogin(e) {
+    function handleSubmitLogin(e) {
         e.preventDefault();
-      
-        let data={};
-        console.log("Submit form")
-        await axios.post("https://movie-group8.up.railway.app/api/login/signin", {
-            email: email,
-            password: password,
-        }).then((res) => {
-            data = res.data;
-            if (data.status == false) {
-                console.log(data.message);
-                setMess(data.message);
-            } else {
-                login(email);
 
-            }
-        }).catch((err) => {
-            console.log(err);
-        })
-
-    }
-
-    function handleSubmitSignup(e) {
-        e.preventDefault();
-        let data={}
-        console.log(passwordS)
-        console.log(repasswordS)
-        if(passwordS != repasswordS){
-            setMessS("Password and repassword is not match");
-        }
-        else{
-            axios.post("https://movie-group8.up.railway.app/api/login/signup", {
-                email: emailS,
-                password: passwordS,
+        let data = {};
+        if (email == '' || password == '') {
+            setMess("Please fill all the field");
+        } else {
+            axios.post("https://movie-group8.up.railway.app/api/login/signin", {
+                email: email,
+                password: password,
             }).then((res) => {
                 data = res.data;
-                console.log(data);
-                if (data == "Email is already exits") {
-                    // console.log(data.message);
-                    setMessS("Email is already exits");
+                if (data.status == false) {
+                    console.log(data.message);
+                    setMess(data.message);
                 } else {
-                    login(emailS);
+                    login(email);
+
                 }
             }).catch((err) => {
                 console.log(err);
             })
         }
-      
+
+
+    }
+
+    function handleSubmitSignup(e) {
+        e.preventDefault();
+        let data = {}
+        console.log(passwordS)
+        console.log(repasswordS)
+        if (passwordS == '' || repasswordS == '' || emailS == '') {
+            setMessS("Please fill all the field");
+        }
+        else {
+            if (passwordS != repasswordS) {
+                setMessS("Password and repassword is not match");
+            }
+            else {
+                axios.post("https://movie-group8.up.railway.app/api/login/signup", {
+                    email: emailS,
+                    password: passwordS,
+                }).then((res) => {
+                    data = res.data;
+                    console.log(data);
+                    if (data == "Email is already exits") {
+                        // console.log(data.message);
+                        setMessS("Email is already exits");
+                    } else {
+                        login(emailS);
+                    }
+                }).catch((err) => {
+                    console.log(err);
+                })
+            }
+        }
+
+
     }
 
     return (
@@ -131,16 +138,11 @@ const Login = () => {
                                                                 placeholder="Your Password" id="pass" autocomplete="off" />
                                                             <i className="input-icon uil uil-lock-alt"></i>
                                                         </div>
-                                                        {/* <div className="mt-2" style={{textAlign: "left", padding: "0 50px;"}}>
-                                                            <input id="rem" type="checkbox" name="remember"
-														style={{position: "relative", left: "0"}} autocomplete="off"/>
-                                                            <label for="rem" className="text-white">Remember me</label>
-                                                        </div> */}
-                                                        {/* <h4 className="mess text-center text-danger">${mess}</h4> */}
+                                                        
                                                         <h4 className="mess text-center text-danger">{mess}</h4>
                                                         <input id="submit" style={{ color: "white;" }} name="submit"
                                                             type="submit" value="submit" className="btn mt-4" />
-                                                        {/* <a href="#" className="btn mt-4">submit</a>  */}
+                                                        
                                                     </form>
                                                     <p className="mb-0 mt-4 text-center">
                                                         <a href="forgotPassword.jsp" className="link">Forgot your
@@ -155,12 +157,7 @@ const Login = () => {
                                                     <h4 className="mb-4 pb-3 text-white">Sign Up</h4>
                                                     <form id="formSignup" onSubmit={handleSubmitSignup}
                                                     >
-                                                        {/* <div className="form-group">
-                                                            <input type="text" name="username" className="form-style"
-                                                                placeholder="Your Full Name" id="logname"
-                                                                autocomplete="off"> <i
-                                                                    className="input-icon uil uil-user"></i>
-                                                        </div>  */}
+                                        
                                                         <div className="form-group">
                                                             <input onChange={EmailSChange} type="email" name="emailS" className="form-style"
                                                                 placeholder="Your Email" id="logemail" autocomplete="off" />
@@ -177,7 +174,7 @@ const Login = () => {
                                                                 autocomplete="off" /> <i
                                                                     className="input-icon uil uil-lock-alt"></i>
                                                         </div>
-                                                        {/* <h4 className="messS text-center text-danger">${messS}</h4> */}
+                                                        
                                                         <h4 className="messS text-center text-danger">{messS}</h4>
                                                         <input style={{ color: "white;" }} name="signup" type="submit"
                                                             value="Signup" className="btn mt-4" />
