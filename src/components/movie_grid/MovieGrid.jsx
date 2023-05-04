@@ -68,10 +68,13 @@ const MovieSearch = (props) => {
   const [keyword, setKeyword] = useState(props.keyword ? props.keyword : "");
 
   const goToSearch = useCallback(() => {
+
     if (keyword.trim().length > 0) {
       history.push(
         `/movie/search/${keyword}`
       );
+    }else{
+      history.push('/movie');
     }
   }, [keyword, props.category, history]);
 
