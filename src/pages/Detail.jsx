@@ -69,12 +69,6 @@ const Detail = () => {
             <div className="movie-content__info">
               <h1 className="title">{item.title || item.name}</h1>
               <div className="genres">
-                {/* {item.genres &&
-                  item.genres.slice(0, 5).map((genre, index) => (
-                    <Link to={"/genres/" + genre.name + "/" + genre.id} key={index} className="genres__item">
-                      {genre.name}
-                    </Link>
-                  ))} */}
                 {categorys &&
                   categorys.map((category, index) => (
                     <Link to={"/category/" + category.name + "/" + category.id} key={index} className="genres__item">
