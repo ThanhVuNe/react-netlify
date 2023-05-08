@@ -202,6 +202,7 @@ h6 span{
   display: block;
     margin: 0;
     padding: 0;
+    margin-bottom: 20px;
 }
 .form-style {
   padding: 13px 20px;
