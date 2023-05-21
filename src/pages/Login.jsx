@@ -4,7 +4,7 @@ import "./login.css";
 import axios from "axios";
 import springApi from "../api/springApi";
 const Login = () => {
-  
+
     function login(email) {
         console.log("login");
         const resp = springApi.getAccountByEmail(email);
@@ -54,11 +54,11 @@ const Login = () => {
         if (email == '' || password == '') {
             setMess("Please fill all the field");
         } else {
-            axios.post("https://movie-group8.up.railway.app/api/login/signin", {
+            axios.post("https://api-movie-group8.up.railway.app/api/login/signin", {
                 email: email,
                 password: password,
             }).then((res) => {
-                console.log(res); 
+                console.log(res);
                 data = res.data;
                 if (data.status == false) {
                     console.log(data.message);
@@ -88,7 +88,7 @@ const Login = () => {
                 setMessS("Password and repassword is not match");
             }
             else {
-                axios.post("https://movie-group8.up.railway.app/api/login/signup", {
+                axios.post("https://api-movie-group8.up.railway.app/api/login/signup", {
                     email: emailS,
                     password: passwordS,
                 }).then((res) => {
@@ -137,11 +137,11 @@ const Login = () => {
                                                                 placeholder="Your Password" id="pass" autocomplete="off" />
                                                             <i className="input-icon uil uil-lock-alt"></i>
                                                         </div>
-                                                        
+
                                                         <h4 className="mess text-center text-danger">{mess}</h4>
                                                         <input id="submit" style={{ color: "white;" }} name="submit"
                                                             type="submit" value="submit" className="btn mt-4" />
-                                                        
+
                                                     </form>
                                                     <p className="mb-0 mt-4 text-center">
                                                         <a href="forgotPassword.jsp" className="link">Forgot your
@@ -156,7 +156,7 @@ const Login = () => {
                                                     <h4 className="mb-4 pb-3 text-white">Sign Up</h4>
                                                     <form id="formSignup" onSubmit={handleSubmitSignup}
                                                     >
-                                        
+
                                                         <div className="form-group">
                                                             <input onChange={EmailSChange} type="email" name="emailS" className="form-style"
                                                                 placeholder="Your Email" id="logemail" autocomplete="off" />
@@ -173,7 +173,7 @@ const Login = () => {
                                                                 autocomplete="off" /> <i
                                                                     className="input-icon uil uil-lock-alt"></i>
                                                         </div>
-                                                        
+
                                                         <h4 className="messS text-center text-danger">{messS}</h4>
                                                         <input style={{ color: "white;" }} name="signup" type="submit"
                                                             value="Signup" className="btn mt-4" />
