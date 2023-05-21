@@ -78,18 +78,18 @@ const MovieSearch = (props) => {
     }
   }, [keyword, props.category, history]);
 
-  useEffect(() => {
-    const enterEvent = (e) => {
-      e.preventDefault();
-      if (e.keyCode === 13) {
-        goToSearch();
-      }
-    };
-    document.addEventListener("keyup", enterEvent);
-    return () => {
-      document.removeEventListener("keyup", enterEvent);
-    };
-  }, [goToSearch]);
+  // useEffect(() => {
+  //   const enterEvent = (e) => {
+  //     e.preventDefault();
+  //     if (e.keyCode === 13) {
+  //       goToSearch();
+  //     }
+  //   };
+  //   document.addEventListener("keyup", enterEvent);
+  //   return () => {
+  //     document.removeEventListener("keyup", enterEvent);
+  //   };
+  // }, [goToSearch]);
 
   return (
     <div className="movie-search">

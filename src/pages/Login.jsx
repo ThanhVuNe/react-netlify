@@ -9,7 +9,7 @@ const Login = () => {
         console.log("login");
         const resp = springApi.getAccountByEmail(email);
         resp.then((res) => {
-            console.log(res);
+            // console.log(res);
             // setDataLogin(res);
             localStorage.setItem("token", JSON.stringify(res));
         });
@@ -58,6 +58,7 @@ const Login = () => {
                 email: email,
                 password: password,
             }).then((res) => {
+                console.log(res); 
                 data = res.data;
                 if (data.status == false) {
                     console.log(data.message);
@@ -104,8 +105,6 @@ const Login = () => {
                 })
             }
         }
-
-
     }
 
     return (
