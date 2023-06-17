@@ -30,6 +30,7 @@ const Login = () => {
     const [passwordS, setPasswordS] = useState("");
     const [repasswordS, setRepasswordS] = useState("")
     const [messS, setMessS] = useState("");
+    const [checkPass, setcheckPass] = useState("");
 
     function EmailChange(e) {
         setEmail(e.target.value);
@@ -40,12 +41,35 @@ const Login = () => {
 
     function EmailSChange(e) {
         setEmailS(e.target.value);
+
     }
     function PasswordSChange(e) {
         setPasswordS(e.target.value);
+        setMessS('');
+        if (e.target.value == '' && repasswordS == '') {
+            setcheckPass('');
+        }
+        else if (e.target.value == repasswordS) {
+            setcheckPass('Password is match');
+
+        }
+        else {
+            setcheckPass('Password is not match');
+        }
     }
     function RepasswordSChange(e) {
+        setEmailS('');
         setRepasswordS(e.target.value);
+        if (e.target.value == '' && passwordS == '') {
+            setcheckPass('');
+        }
+        else if (e.target.value == passwordS) {
+            setcheckPass('Password is match');
+        }
+        else {
+            setcheckPass('Password is not match');
+        }
+
     }
     function handleSubmitLogin(e) {
         e.preventDefault();
@@ -75,11 +99,12 @@ const Login = () => {
 
     }
 
-    function handleSubmitSignup(e) {
+    async function handleSubmitSignup(e) {
         e.preventDefault();
         let data = {}
         console.log(passwordS)
         console.log(repasswordS)
+        setcheckPass('');
         if (passwordS == '' || repasswordS == '' || emailS == '') {
             setMessS("Please fill all the field");
         }
@@ -88,7 +113,7 @@ const Login = () => {
                 setMessS("Password and repassword is not match");
             }
             else {
-                axios.post("https://api-movie-group8.up.railway.app/api/login/signup", {
+                await axios.post("https://api-movie-group8.up.railway.app/api/login/signup", {
                     email: emailS,
                     password: passwordS,
                 }).then((res) => {
@@ -172,6 +197,9 @@ const Login = () => {
                                                                 placeholder="Re-Password" id="logrepass"
                                                                 autocomplete="off" /> <i
                                                                     className="input-icon uil uil-lock-alt"></i>
+                                                        </div>
+                                                        <div style={{ color: passwordS === repasswordS ? "green" : "red" }}>
+                                                            {checkPass}
                                                         </div>
 
                                                         <h4 className="messS text-center text-danger">{messS}</h4>
