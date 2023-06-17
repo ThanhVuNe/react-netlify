@@ -31,7 +31,7 @@ const Comment = (props) => {
             id_movie: props.id
         }
         // console.log(data);
-        axios.post("https://movie-group8.up.railway.app/api/comment/add", data).then((res) => {
+        axios.post("https://movie-group-8.up.railway.app/api/comment/add", data).then((res) => {
             // console.log(res);
             var resData = res.data;
             console.log(resData);
@@ -47,7 +47,7 @@ const Comment = (props) => {
 
         return () => {
 
-            axios.delete("https://movie-group8.up.railway.app/api/comment/delete/" + id).then((res) => {
+            axios.delete("https://movie-group-8.up.railway.app/api/comment/delete/" + id).then((res) => {
                 console.log(res);
                 setComments(comments.filter((comment) => comment[0] !== id));
             }).catch((err) => {
